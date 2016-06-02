@@ -1,6 +1,14 @@
-<html>
+<html layout:decorator="layout">
     <head></head>
     <body>
-        <h1>test body</h1>
-    </body>
+		<div layout:fragment="content">
+            <div ng-app="testapp">
+                <div ng-controller="TestController as vm">
+                    <h1>test body</h1> 
+                    <h3 th:text="#{test.string}"></h3>
+                    <h2>{{vm.teststring}}</h2>                    
+                </div>
+            </div>
+		</div>
+	</body>    
 </html>
