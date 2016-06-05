@@ -1,0 +1,14 @@
+<html layout:decorator="layout">
+    <head></head>
+    <body>
+		<div layout:fragment="content">
+            <div ng-app="viewerApp">
+                <div ng-controller="ViewerController as vm">   
+                    <img ng-src="{{vm.image}}" bg-image="bg-image" class="img-responsive center-block"
+			            alt="no img">
+		            </img>         
+                </div>
+            </div>
+		</div>
+	</body>    
+</html>
