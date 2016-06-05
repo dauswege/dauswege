@@ -1,16 +1,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
     <head>        
-        <link rel="stylesheet" href="assets/style/vendor.css"/>
-        <script src="assets/js/angular.min.js" />  
-        <script src="assets/js/scripts.js" />
+        <link rel="stylesheet" th:href="@{/assets/style/vendor.css}"/>
+        <script th:src="@{/assets/js/jquery.min.js}" />
+        <script th:src="@{/assets/js/angular.min.js}" />  
+        <script th:src="@{/assets/js/scripts.js}" />
         <script>
-            window.BASEURL = <span th:text="@{/}" th:remove="tag" />;
+            window.BASEURL = "<span th:text="@{/}" th:remove="tag" />";
         </script> 
     </head>
     <body>
     	
-      <div th:text="@{/}">asdf</div>
        <div layout:fragment="content">
        		<h1>asdfadf</h1>
        </div>

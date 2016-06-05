@@ -4,12 +4,10 @@ var gulp = require('gulp');
     concat = require('gulp-concat'),
     watch = require('gulp-watch'),
     ts = require('gulp-typescript');
-    //angularFilesort = require('gulp-angular-filesort'),
-    //inject = require('gulp-inject')
     ;
 
 gulp.task('watch', function(){
-  return gulp.watch('js/**/*.js', ['scripts'])
+  return gulp.watch('js/**/*.js', ['scripts', 'ts'])
   ;
 });
 
@@ -29,7 +27,8 @@ gulp.task('scripts', function(){
 });
 
 gulp.task('vendorjs', function(){
-  return gulp.src(['node_modules/angular/angular.min.js', 
+  return gulp.src(['node_modules/angular/angular.min.js',
+                   'node_modules/jquery/dist/jquery.min.js', 
                    'node_modules/bootstrap/dist/js/bootstrap.min.js'           
      ])
     .pipe(gulp.dest('src/main/resources/static/assets/js/'));
