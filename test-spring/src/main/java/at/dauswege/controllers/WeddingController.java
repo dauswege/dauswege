@@ -31,8 +31,10 @@ public class WeddingController {
 
   private static Integer fileCount = 0;
 
+
   @Autowired
-  public WeddingController(String picFolderPath, String thumbnailFolderString) {
+  public WeddingController(String picFolderPath, String thumbnailFolderString,
+      ImageService imageService) {
     picFolder = new File(picFolderPath);
     thumbnailFolder = new File(thumbnailFolderString);
   }

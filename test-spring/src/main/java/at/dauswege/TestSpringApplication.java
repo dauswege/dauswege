@@ -40,7 +40,7 @@ public class TestSpringApplication {
   @Autowired
   public WeddingController weddingController(Environment environment) {
     return new WeddingController(environment.getProperty(PICFOLDER_PROP),
-        environment.getProperty(THUMBNAIL_PROP));
+        environment.getProperty(THUMBNAIL_PROP), new ImageService());
   }
 
   @Bean

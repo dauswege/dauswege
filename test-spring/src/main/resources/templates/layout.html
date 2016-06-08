@@ -3,11 +3,17 @@
     <head>        
         <link rel="stylesheet" th:href="@{/assets/style/vendor.css}"/>
         <script th:src="@{/assets/js/jquery.min.js}" />
-        <script th:src="@{/assets/js/angular.min.js}" />  
+        <script th:src="@{/assets/js/angular.min.js}" />
+        <script th:src="@{/assets/js/exif.js}" />  
         <script th:src="@{/assets/js/scripts.js}" />
         <script>
             window.BASEURL = "<span th:text="@{/}" th:remove="tag" />";
         </script> 
+        <style>
+            img {
+                image-orientation: from-image;
+            }
+        </style>
     </head>
     <body>
     	

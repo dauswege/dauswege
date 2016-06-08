@@ -46,10 +46,10 @@
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 		
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.springframework.boot</groupId> -->
-<!-- 			<artifactId>spring-boot-devtools</artifactId> -->
-<!-- 		</dependency> -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -68,30 +68,12 @@
 			<version>3.3.2</version>
 		</dependency>
 		
-		<!-- http://mvnrepository.com/artifact/com.google.http-client/google-http-client -->
-<!-- 		<dependency> -->
-<!-- 		    <groupId>com.google.http-client</groupId> -->
-<!-- 		    <artifactId>google-http-client</artifactId> -->
-<!-- 		    <version>1.22.0</version> -->
-<!-- 		</dependency> -->
-		
-<!-- 		<dependency> -->
-<!-- 		  <groupId>com.google.oauth-client</groupId> -->
-<!-- 		  <artifactId>google-oauth-client</artifactId> -->
-<!-- 		  <version>1.22.0</version> -->
-<!-- 		</dependency> -->
-		
+		<!-- http://mvnrepository.com/artifact/com.google.http-client/google-http-client -->		
 		<dependency>
 		  <groupId>com.google.apis</groupId>
 		  <artifactId>google-api-services-gmail</artifactId>
 		  <version>v1-rev41-1.22.0</version>
 		</dependency>
-		
-<!-- 		<dependency> -->
-<!-- 		  <groupId>com.google.api-client</groupId> -->
-<!-- 		  <artifactId>google-api-client</artifactId> -->
-<!-- 		  <version>1.22.0</version> -->
-<!-- 		</dependency> -->
 		
 		<dependency>
 		  <groupId>com.google.oauth-client</groupId>
@@ -104,8 +86,33 @@
 			<artifactId>imgscalr-lib</artifactId>
 			<version>4.2</version>
 		</dependency>
+		<dependency>
+		  <groupId>org.apache.commons</groupId>
+		  <artifactId>commons-imaging</artifactId>
+		  <version>1.0-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+		  <groupId>net.coobird</groupId>
+		  <artifactId>thumbnailator</artifactId>
+		  <version>0.4.8</version>
+		</dependency>
 		
 	</dependencies>
+	
+	<repositories>
+		<repository>
+		  <id>apache.snapshots</id>
+		  <name>Apache Development Snapshot Repository</name>
+		  <url>https://repository.apache.org/content/repositories/snapshots/</url>
+		  <releases>
+		    <enabled>false</enabled>
+		  </releases>
+		  <snapshots>
+		    <enabled>true</enabled>
+		  </snapshots>
+		</repository>      
+	</repositories>
 
 	<build>
 		<plugins>

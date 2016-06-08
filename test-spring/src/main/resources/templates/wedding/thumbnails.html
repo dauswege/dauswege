@@ -1,0 +1,15 @@
+<html layout:decorator="layout">
+    <head></head>
+    <body>
+		<div layout:fragment="content">
+            <div ng-app="thumbnailApp">
+                <div ng-controller="ThumbnailController as vm">   
+                    <div class="container">
+			            <img class="col-md-2" ng-repeat="thumbnail in vm.thumbnails"
+                             ng-src="{{thumbnail}}" ng-click="vm.rotateImage(thumbnail)"/>
+		            </div>         
+                </div>
+            </div>
+		</div>
+	</body>    
+</html>

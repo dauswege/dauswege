@@ -69,7 +69,12 @@ public class MailReceiver {
     DATA_STORE_FACTORY =
         new FileDataStoreFactory(new File(env.getProperty("viewer.google.credentials.store")));
     userId = gmailUser;
-    fileStorage = picStorage;
+    if (picStorage.endsWith("\\") || picStorage.endsWith("/")) {
+      fileStorage = picStorage;
+    } else {
+      fileStorage = picStorage + "/";
+    }
+
     this.thumbnailService = thumbnailService;
     this.service = this.getGmailService();
   }
@@ -180,7 +185,7 @@ public class MailReceiver {
         outFileStream.close();
 
         // Create thumbnail
-        // thumbnailService.createThumbnail(outFile);
+        thumbnailService.createThumbnail(outFile);
       }
     }
   }
