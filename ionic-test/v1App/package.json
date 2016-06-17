@@ -1,7 +1,7 @@
 {
-  "name": "v1app",
+  "name": "A.V und W",
   "version": "1.1.1",
-  "description": "v1App: An Ionic project",
+  "description": "A.V und W: An Ionic project",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-concat": "^2.2.0",

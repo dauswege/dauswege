@@ -40,27 +40,38 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
-    url: '/dash',
+  .state('tab.photo', {
+    url: '/photo',
     views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'CameraController'
+      'tab-photo': {
+        templateUrl: 'templates/tab-photo.html',
+        controller: 'CameraController',
+        controllerAs: 'vm'
       }
     }
   })
-
-  .state('tab.account', {
-    url: '/account',
+  .state('tab.image', {
+    url: '/image',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
+      'tab-image': {
+        templateUrl: 'templates/tab-image.html',
+        controller: 'ImageController',
+        controllerAs: 'vm'
+      }
+    }
+  })
+  .state('tab.mail', {
+    url: '/mail',
+    views: {
+      'tab-mail': {
+        templateUrl: 'templates/tab-mail.html',
+        controller: 'MailController',
+        controllerAs: 'vm'
       }
     }
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/photo');
 
 });

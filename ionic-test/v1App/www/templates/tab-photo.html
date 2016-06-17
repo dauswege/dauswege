@@ -1,0 +1,22 @@
+<ion-view view-title="Foto"> 
+  
+  <ion-content class="padding"  on-swipe-left="vm.onSwipeLeft()">
+    <div ng-show="vm.isLoading">
+      <h2>Kamera wird geladen. Bitte warten.</h2>
+    </div>
+    <div ng-show="!vm.isLoading">
+      <h2>Woher soll das Foto kommen?</h2>  
+      <div class="list card">
+        <a href="#" class="item item-icon-left" ng-click="vm.takePhoto()">
+          <i class="icon ion-ios-camera"></i>
+          Ein neues Foto schießen
+        </a>
+        <a href="#" class="item item-icon-left" ng-click="vm.choosePhoto()">
+          <i class="icon ion-ios-albums"></i>
+          Ein Foto aus dem Album wählen
+        </a>
+        
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
