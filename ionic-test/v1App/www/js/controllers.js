@@ -61,7 +61,6 @@ angular.module('starter.controllers', [])
     $state.go('tab.photo');
   };
   
-  //'file://' + $scope.imgURI
 })
 
 .controller("CameraController", function ($scope, $state, $ionicPlatform, $cordovaCamera, $cordovaEmailComposer, Images) {
@@ -118,7 +117,6 @@ angular.module('starter.controllers', [])
     };
 
     $cordovaCamera.getPicture(options).then(function (imageData) {
-        // setImage("file://" + imageData);
         setImage(imageData);
         vm.isLoading = false;
         $state.go('tab.image');
