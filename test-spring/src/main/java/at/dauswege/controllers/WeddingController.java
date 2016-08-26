@@ -2,7 +2,12 @@ package at.dauswege.controllers;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -10,9 +15,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -64,7 +72,7 @@ public class WeddingController {
 
     }
 
-    return "pics/" + fileName;
+    return "pics/" + fileName + "?" + new Date();
 
   }
 
@@ -83,10 +91,47 @@ public class WeddingController {
         }
       }
     }
-
     return thumbnails;
   }
 
+  @CrossOrigin(origins = "http://localhost:8100")
+  @ResponseBody
+  @RequestMapping(method = RequestMethod.GET, path = {"/thumbnailsPaged/{page}"})
+  public List<String> getThumbnailsPaged(@PathVariable int page,
+      @RequestParam(name = "size") int size) {
+    List<String> thumbnails = new ArrayList<>();
+
+    if (thumbnailFolder.isDirectory()) {
+      File[] files = thumbnailFolder.listFiles();
+      if (files.length > 0) {
+        for (File file : files) {
+
+          thumbnails.add("pics/thumb/" + file.getName());
+        }
+      }
+    }
+
+    // thumbnails.sort(new Comparator<String>() {
+    // @Override
+    // public int compare(String o1, String o2) {
+    // return o1.compareTo(o2);
+    // }
+    // });
+
+    List<String> pagedList = new ArrayList<>();
+    int startIndex = (page - 1) * size;
+    int endIndex = startIndex + size;
+    if (thumbnails.size() >= endIndex + 1) {
+      pagedList = thumbnails.subList(startIndex, endIndex);
+    } else if (thumbnails.size() >= startIndex) {
+      pagedList = thumbnails.subList(startIndex, thumbnails.size());
+    }
+
+
+    return pagedList;
+  }
+
+  @CrossOrigin
   @RequestMapping(value = "/rotateImage", method = RequestMethod.PUT)
   public void rotateImage(@RequestBody Map<String, String> pics) {
 
@@ -112,6 +157,28 @@ public class WeddingController {
           + file.getName()));
     }
 
+  }
+
+  @CrossOrigin
+  @RequestMapping(value = "/deleteImage", method = RequestMethod.PUT)
+  public void deleteImage(@RequestBody Map<String, String> pics) throws IOException {
+
+    String fileName = pics.get("fileName");
+    Path path = Paths.get(fileName);
+
+    File[] files = picFolder.listFiles(new FileFilter() {
+
+      @Override
+      public boolean accept(File pathname) {
+        System.err.println(pathname.getName() + " - " + path.getFileName().toString());
+        return pathname.getName().equals(path.getFileName().toString());
+      }
+    });
+
+    for (File file : files) {
+      Files.delete(Paths.get(file.toURI()));
+      Files.delete(Paths.get(thumbnailFolder + "/" + file.getName()));
+    }
   }
 
 }

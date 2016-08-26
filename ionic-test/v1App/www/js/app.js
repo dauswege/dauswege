@@ -22,7 +22,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   });
 })
-
+.config(function($ionicConfigProvider){
+  $ionicConfigProvider.views.maxCache(0);
+})
 .config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
@@ -69,7 +71,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         controllerAs: 'vm'
       }
     }
-  });
+  })
+  .state('tab.admin', {
+    
+    url: '/admin',
+    views: {
+      'tab-admin': {
+        templateUrl: 'templates/tab-admin.html',
+        controller: 'AdminController',
+        controllerAs: 'vm'
+      }
+    }
+  })
+  ;
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/photo');

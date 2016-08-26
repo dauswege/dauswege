@@ -1,0 +1,30 @@
+<ion-view view-title="Admin" cache-view="false">
+  <ion-content class="padding" on-swipe-right="vm.onSwipeRight()" on-swipe-left="vm.onSwipeLeft()">
+      <h1 ng-click="vm.openModal()"> .</h1>
+      <section style="display:flex; flex-flow: row wrap;">
+          
+        <section ng-repeat="thumb in vm.thumbs"  style="display: flex; flex-flow: column;">
+            <img ng-src="{{vm.imageHost}}/{{thumb}}" ng-click="vm.openModal(thumb)" style="padding: 1px; order: -1; align-self: center;" />
+        </section>
+      </section>
+  </ion-content>
+</ion-view>
+<script id="my-modal.html" type="text/ng-template">
+  <ion-modal-view cache-view="false">
+    <ion-header-bar class="bar bar-header bar-positive">
+      <h1 class="title">Bearbeiten</h1>
+      <button class="button button-primary" ng-click="vm.modal.hide()">Cancel</button>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <div class="list">
+            <label class="item" ng-click="vm.deleteImage(vm.currentThumb)">
+                <span >Löschen</span>
+            </label>
+            <label class="item" ng-click="vm.rotateImage(vm.currentThumb)">
+                <span>Drehen</span>
+            </label>
+        </div>
+      <img ng-src="{{vm.imageHost}}/{{vm.currentThumb}}" />
+    </ion-content>
+  </ion-modal-view>
+</script>

@@ -16,9 +16,8 @@ import java.util.stream.Collectors;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
 
-@Component
+// @Component
 public class RadioSalzburgDownload implements CommandLineRunner {
 
   public static String filePathString = "c:\\temp\\rsdownload.txt";

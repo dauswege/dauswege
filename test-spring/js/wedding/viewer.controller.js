@@ -14,6 +14,8 @@
         vm.changeInterval(10000);
         vm.getImage();
         
+        vm.nextPic = nextPic;
+        
         vm.test = 'asd';
         vm.interval;
 
@@ -31,6 +33,11 @@
             vm.interval = $interval.cancel(vm.interval);
             vm.interval = $interval(getImage, intervalTime);
             return vm.interval;
+        };
+        
+        function nextPic() {
+            changeInterval(10000);
+            getImage();
         };
 
     };
